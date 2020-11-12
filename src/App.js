@@ -1,24 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import { Route, Link } from 'react-router-dom';
+import AllNotes from './AllNotes';
+import NewNote from './NewNote';
+import EditNote from './EditNote';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className="App">
+          <nav className="navbar App-header" role="navigation" aria-label="main navigation">
+            <div className="navbar-brand">
+              <Link to="/" className="navbar-item">NotesQL</Link>
+            </div>
+            <div className="navbar-end">
+              <Link to="/" className="navbar-item">All Notes</Link>
+              <Link to="/newnote" className="navbar-item">New Note</Link>
+            </div>
+          </nav>
+          <div className="App-body">
+            <Route exact path="/" component={AllNotes} />
+            <Route path="/newnote" component={NewNote} />
+            <Route path="/note/:id" component={EditNote} />
+          </div>
+      </div>
   );
 }
 
